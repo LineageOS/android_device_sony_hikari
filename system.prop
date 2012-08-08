@@ -12,8 +12,6 @@ persist.rild.nitz_short_ons_1=
 persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
-DEVICE_PROVISIONED=1
-keyguard.no_require_sim=1
 ro.ril.hsxpa=1
 ro.ril.gprsclass=10
 
@@ -21,9 +19,11 @@ ro.ril.gprsclass=10
 ro.sf.lcd_density=320
 com.qc.hardware=true
 debug.sf.hw=1
-debug.composition.type=gpu
-debug.mdpcomp.maxlayer=3
-debug.mdpcomp.logs=0
+debug.enabletr=true
+debug.composition.type=dyn
+ro.sf.compbypass.enable=1
+ro.hdmi.enable=false
+com.qc.hdmi_out=false
 
 # QCOM CpuGovernorService
 dev.pm.dyn_samplingrate=1
@@ -36,6 +36,10 @@ wifi.supplicant_scan_interval=30
 
 # system props for the data modules
 ro.use_data_netmgrd=true
+persist.data_netmgrd_nint=3
+
+#system props for time-services
+persist.timed.enable=true
 
 # System prop for sending transmit power request to RIL during WiFi hotspot on/off
 ro.ril.transmitpower=true

@@ -22,8 +22,9 @@
 #
 #
  
-# Torch
+# Camera & Torch
 PRODUCT_PACKAGES := \
+    Camera \
     Torch
 
 # Inherit from those products. Most specific first.

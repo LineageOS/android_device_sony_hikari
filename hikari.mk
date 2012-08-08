@@ -14,20 +14,27 @@
 # limitations under the License.
 #
 
-# Inherit the proprietary counterpart
-$(call inherit-product-if-exists, vendor/sony/hikari/hikari-vendor.mk)
-
-DEVICE_PACKAGE_OVERLAYS += device/sony/hikari/overlay
-
 # Inherit the fuji-common definitions
 $(call inherit-product, device/sony/fuji-common/fuji.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
+# Inherit the proprietary counterpart
+$(call inherit-product-if-exists, vendor/sony/hikari/hikari-vendor.mk)
+
+# misc
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.setupwizard.enable_bypass=1 \
+    dalvik.vm.lockprof.threshold=500 \
+    ro.com.google.locationfeatures=1 \
+    dalvik.vm.dexopt-flags=m=y
+
+DEVICE_PACKAGE_OVERLAYS += device/sony/hikari/overlay
+
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
+    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
 # This device is xhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xhdpi density so
@@ -40,10 +47,6 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_COPY_FILES += \
    device/sony/fuji-common/prebuilt/logo_X.rle:root/logo.rle \
 
-# Audio
-PRODUCT_COPY_FILE += \
-   $(LOCAL_PATH)/config/audio_policy.conf:system/etc/audio_policy.conf \
-
 # Configuration scripts
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/prebuilt/pre_hw_config.sh:system/etc/pre_hw_config.sh \
@@ -52,9 +55,6 @@ PRODUCT_COPY_FILES += \
 # USB function switching
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/config/init.semc.usb.rc:root/init.semc.usb.rc
-
-PRODUCT_COPY_FILES += \
-   $(LOCAL_PATH)/config/fstab.semc:root/fstab.semc
 
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/config/vold.fstab:system/etc/vold.fstab \
@@ -91,7 +91,7 @@ PRODUCT_COPY_FILES += \
     device/sony/fuji-common/prebuilt/animations/charging_animation_06_X.png:system/semc/chargemon/data/charging_animation_06.png \
     device/sony/fuji-common/prebuilt/animations/charging_animation_07_X.png:system/semc/chargemon/data/charging_animation_07.png
 
-$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+$(call inherit-product, frameworks/base/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, vendor/sony/hikari/hikari-vendor.mk)
 
