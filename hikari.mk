@@ -20,9 +20,6 @@ $(call inherit-product, device/sony/fuji-common/fuji.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
-# Inherit the proprietary counterpart
-$(call inherit-product-if-exists, vendor/sony/hikari/hikari-vendor.mk)
-
 # misc
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \
