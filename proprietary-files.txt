@@ -81,7 +81,6 @@ lib/libals.so
 lib/libanthal.so
 lib/libaudcal.so
 lib/libaudioalsa.so
-lib/libc2d2_z180.so
 lib/libcald_client.so
 lib/libcald_hal.so
 lib/libcald_imageutil.so
